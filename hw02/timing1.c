@@ -10,8 +10,8 @@
 
 volatile double gtod(void)
 {
-  static struct timeval tv;
-  static struct timezone tz;
+  static struct timeval tv; // holds two members: tv_sec (seconds) and tv_usec (microseconds)
+  static struct timezone tz;  // hold timezone information, but often unused and obsolete in many systems
   gettimeofday(&tv,&tz);
   return tv.tv_sec + 1.e-6*tv.tv_usec;
 }
